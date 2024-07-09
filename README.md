@@ -2,9 +2,8 @@
 模拟穿越火线的3d游戏
 
 
-用react-three-fiber是否可以开发一款类似cs的射击游戏，分析下可行性。具体功能，任务移动，跳跃，开枪
+用react-three-fiber是否可以开发一款类似cs的射击游戏
 
-以下是使用 react-three-fiber 开发此类游戏的一些考虑因素：
 渲染：React-three-fiber 和 three.js 都可以提供高质量的 3D 渲染。你可以创建复杂的 3D 模型，设置灯光和相机，添加纹理和材质，等等。这对于创建游戏的环境和角色是足够的。
 物理：一个射击游戏通常需要一个物理引擎，以处理碰撞，重力，角色移动等。Three.js 和 react-three-fiber 本身没有内置的物理引擎，但你可以将它们与 Ammo.js 或 Oimo.js 之类的库一起使用。
 动画：Three.js 提供了一些基本的动画功能，但对于复杂的角色动画，你可能需要使用类似 Mixamo 的工具来创建和导入动画。
@@ -28,3 +27,7 @@
   在使用 react-three-fiber 和物理引擎（如 Ammo.js 或 Oimo.js）时，你可以将上述步骤转化为相应的 API 调用。例如，你可以用 react-three-fiber 创建和渲染子弹的 3D 模型，用物理引擎更新子弹的位置和检测碰撞。
 
 
+
+@react-three/rapier 使得开发者可以利用 Rapier 的物理引擎在 React Three Fiber 的 3D 场景中添加各种物理效果如碰撞检测器
+@react-three/cannon 允许在 React Three Fiber 中使用 Cannon.js 物理引擎，以创建真实世界的交互式物理对象。
+@react-three/drei 是一个 React Three Fiber 的扩展库，它提供了许多有用的组件和实用程序。

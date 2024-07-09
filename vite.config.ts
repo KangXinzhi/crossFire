@@ -12,5 +12,5 @@ export default defineConfig({
         '@': '/src'
     }
   },
-  base: import.meta.env.MODE === 'production' ? '/crossFire/' : '/'
+  // base: import.meta.env.MODE === 'production' ? '/crossFire/' : '/'
 })
