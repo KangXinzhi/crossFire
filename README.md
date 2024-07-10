@@ -31,3 +31,7 @@
 @react-three/rapier 使得开发者可以利用 Rapier 的物理引擎在 React Three Fiber 的 3D 场景中添加各种物理效果如碰撞检测器
 @react-three/cannon 允许在 React Three Fiber 中使用 Cannon.js 物理引擎，以创建真实世界的交互式物理对象。
 @react-three/drei 是一个 React Three Fiber 的扩展库，它提供了许多有用的组件和实用程序。
+
+
+跳跃功能实现：
+在玩家的底部发射一个向下的射线，然后检查这个射线是否与地面相交。如果相交，那么玩家就在地面上。在地面上可以按空格键来跳跃。 

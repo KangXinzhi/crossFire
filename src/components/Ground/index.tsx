@@ -1,6 +1,6 @@
 import * as THREE from "three";
 import { useTexture } from "@react-three/drei";
-import {RigidBody} from "@react-three/rapier";
+import {CuboidCollider, RigidBody} from "@react-three/rapier";
 import floorTexture from "@/assets/floor.png";
 
 const Ground = () => {
@@ -8,12 +8,13 @@ const Ground = () => {
     texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
 
     return (
-        <RigidBody>
-        <mesh position={[0, -5, 0]} rotation-x={-Math.PI / 2}>
-            <planeGeometry args={[500, 500]} />
-            <meshStandardMaterial color="gray" map={texture} map-repeat={[100, 100]} />
-        </mesh>
-    </RigidBody>
+        <RigidBody type="fixed" colliders={false}>
+            <mesh position={[0, 0, 0]} rotation-x={-Math.PI / 2}>
+                <planeGeometry args={[500, 500]} />
+                <meshStandardMaterial color="gray" map={texture} map-repeat={[100, 100]} />
+            </mesh>
+            <CuboidCollider args={[500, 2, 500]} position={[0, -5, 0]}/>
+        </RigidBody>
     );
 }
 
