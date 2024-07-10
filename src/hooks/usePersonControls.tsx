@@ -12,7 +12,7 @@ type Keys = {
     [key: string]: keyof Movement;
 }
 
-export const usePersonControls = () => {
+const usePersonControls = () => {
     const keys: Keys = {
         KeyW: "forward",
         KeyS: "backward",
@@ -55,3 +55,5 @@ export const usePersonControls = () => {
 
     return movement;
 }
+
+export default usePersonControls;

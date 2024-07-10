@@ -2,6 +2,7 @@ import {PointerLockControls, Sky} from "@react-three/drei";
 import {Physics, RigidBody} from "@react-three/rapier";
 import Ground from "./components/Ground";
 import Player from "./components/Player";
+import {WeaponModel} from "./model/WeaponModel";
 
 export const App = () => {
     return (
@@ -18,6 +19,9 @@ export const App = () => {
                     </mesh>
                 </RigidBody>
             </Physics>
+            <group position={[0, 3, 0]}>
+                <WeaponModel />
+            </group>
         </>
     )
 }

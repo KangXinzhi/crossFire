@@ -3,7 +3,7 @@ import * as THREE from "three";
 import * as RAPIER from "@dimforge/rapier3d-compat"
 import {CapsuleCollider, RigidBody, useRapier} from "@react-three/rapier";
 import {useRef} from "react";
-import {usePersonControls} from "@/hooks";
+import usePersonControls from "@/hooks/usePersonControls";
 import {useFrame} from "@react-three/fiber";
 
 const MOVE_SPEED = 5;
