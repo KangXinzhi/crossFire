@@ -5,16 +5,19 @@ import {CapsuleCollider, RigidBody, useRapier} from "@react-three/rapier";
 import {useRef} from "react";
 import usePersonControls from "@/hooks/usePersonControls";
 import {useFrame} from "@react-three/fiber";
+import { Weapon } from "../Weapon";
 
 const MOVE_SPEED = 5;
 const direction = new THREE.Vector3();
 const frontVector = new THREE.Vector3();
 const sideVector = new THREE.Vector3();
+const rotation = new THREE.Vector3();
 
 const Player = () => {
     const playerRef = useRef<any>();
     const { forward, backward, left, right, jump } = usePersonControls();
     const rapier = useRapier();
+    const objectInHandRef = useRef<any>();
     useFrame((state) => {
         if (!playerRef.current) return;
 
@@ -40,19 +43,27 @@ const Player = () => {
         // 移动相机，将获取玩家的当前位置，并在每次刷新帧时更改相机的位置。
         const {x, y, z} = playerRef.current.translation();
         state.camera.position.set(x, y, z);
+
+        // moving object in hand for the player
+        objectInHandRef.current.rotation.copy(state.camera.rotation);
+        objectInHandRef.current.position.copy(state.camera.position).add(state.camera.getWorldDirection(rotation));
     });
 
     const doJump = () => {
         playerRef.current.setLinvel({x: 0, y: 8, z: 0});
+        
     }
 
     return (
         <>
              <RigidBody colliders={false} position={[0, 1, -2]} mass={1} ref={playerRef} lockRotations>
-                <mesh>
+                <mesh castShadow>
                     <capsuleGeometry args={[0.5, 0.5]} />
                     <CapsuleCollider args={[0.5, 0.5]} />
                 </mesh>
+                <group ref={objectInHandRef}>
+                    <Weapon position={[0.3, -0.1, 0.3]} scale={0.3} />
+                </group>
             </RigidBody>
         </>
     );
