@@ -25,7 +25,7 @@ const Player = () => {
 
         frontVector.set(0, 0, +backward - +forward);
         sideVector.set(+left - +right, 0, 0);
-        // 为了使角色精确地沿着相机所指向的轨迹移动，我们需要添加applyEuler 。
+        // 使角色精确地沿着相机所指向的轨迹移动，添加applyEuler 。
         direction.subVectors(frontVector, sideVector).normalize().multiplyScalar(MOVE_SPEED).applyEuler(state.camera.rotation);
 
         playerRef.current.wakeUp();
