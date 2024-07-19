@@ -1,0 +1,72 @@
+.rocker {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: painted;
+
+  .joystick {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.1);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.1);
+    .stickBox {
+      position: relative;
+      .stick {
+        position: absolute;
+        transform: translate(-50%, -50%);
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        background-color: rgba(255, 255, 255, 0.5);
+      }
+    }
+  }
+  .button {
+    position: absolute;
+    bottom: 10%;
+    right: 10%;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.1);
+    transition: 0.1s;
+    transform: scale(1);
+  }
+  .click {
+    transform: scale(0.9);
+  }
+  // 动画
+  .appear {
+    animation: bigger 0.2s 0s 1 ease-in;
+    animation-fill-mode: forwards;
+  }
+  .disappear {
+    animation: litter 0.2s 0s 1 ease-in;
+    animation-fill-mode: forwards;
+  }
+  @keyframes bigger {
+    0% {
+      scale: 0.8;
+    }
+    100% {
+      scale: 1;
+    }
+  }
+  @keyframes litter {
+    0% {
+      scale: 1;
+    }
+    100% {
+      scale: 0.8;
+    }
+  }
+}

@@ -1,0 +1,40 @@
+.loading {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: #242424;
+  z-index: 9999;
+  pointer-events: painted;
+}
+
+.loadPic {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.load {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 5px;
+  border-radius: 10px;
+  color: white;
+}
+
+.start {
+  position: absolute;
+  left: 50%;
+  top: 55%;
+  transform: translate(-50%, -50%);
+  width: 100px;
+  height: 45px;
+  font-size: 18px;
+  color: white;
+  pointer-events: painted;
+  text-align: center;
+}
