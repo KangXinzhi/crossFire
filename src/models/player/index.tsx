@@ -11,28 +11,20 @@ import { toFixed } from "../../utils";
 const SPEED = 4; // 移动速度
 const JUMP = 7; // 跳跃速度
 const direction = new THREE.Vector3(); // 空间方向
-// 生成枚举
-enum STATUS {
-  walk,
-  idle,
-  run
-}
+
 interface ControlDispatcher extends THREE.EventDispatcher {
   getDistance(): number;
 }
 function Player() {
   // 加载模型
-  const { scene, animations } = useGLTF("./player.glb");
+  const { scene, animations } = useGLTF("./swat.glb");
   const { ref, actions, names } = useAnimations(animations, scene);
-  const [status, setStatus] = useState(names[STATUS.idle])
+  const [status, setStatus] = useState('idle')
 
   const { camera } = useThree();
 
   const player = useRef<RapierRigidBody>(null); // 玩家的引用
   useKeyboardControls((state) => move(state))
-
-  console.log('status',status);
-  console.log('names',names);
 
   // 帧渲染
   useFrame((state: RootState, delta) => {
@@ -62,7 +54,6 @@ function Player() {
   function move(state: {
     [key: string]: boolean;
   }): boolean {
-    console.log('state', state);
     if (!camera || !player.current) return false
     const { forward, backward, left, right, jump } = state
     // 获取移动方向
@@ -83,9 +74,9 @@ function Player() {
     }
 
     // 播放动画
-    let key = names[STATUS.walk]
-    if (direction.x !== 0 || direction.z !== 0 || jump) {
-      key = names[STATUS.idle]
+    let key = 'idle'
+    if (direction.x !== 0 || direction.z !== 0) {
+      key = 'walk'
     }
 
     if (status !== key) setStatus(key)
